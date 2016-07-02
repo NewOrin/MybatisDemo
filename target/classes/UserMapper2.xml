@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neworin.dao.UserDao2">
+    <!-- 配置实体类与数据库表的映射关系 -->
+    <resultMap type="com.neworin.entity.User" id="user">
+        <id column="_ID" property="_id"/>
+        <result column="NAME" property="name"/>
+        <result column="AGE" property="age"/>
+    </resultMap>
+    <!-- 查询全部     id(接口方法名) -->
+    <select id="findAll" resultMap="user">
+        select * from user
+    </select>
+    <select id="findById" resultMap="user">
+        select * from user where _id=#{id}
+    </select>
+    <update id="updateUser">
+        update user set name=#{name},age=#{age} where _id=#{_id}
+    </update>
+</mapper>
